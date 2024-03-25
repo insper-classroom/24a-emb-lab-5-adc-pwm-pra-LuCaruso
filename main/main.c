@@ -34,14 +34,11 @@ void write_package(adc_t data) {
 void adc_task_x(void *p) {
     adc_init();
     adc_gpio_init(27); // X
-
-    int x;
-
-
+    
     while (1) {
         //X
         adc_select_input(1); // Select ADC input 1 (GPIO27)
-        x = adc_read();
+        int x = adc_read();
         //printf("X: %d V\n", x);
 
         struct adc x_pos = {0,x};
@@ -55,12 +52,10 @@ void adc_task_y(void *p) {
     adc_init();
     adc_gpio_init(28); //Y
 
-    int y;
-
     while (1) {
         //Y
         adc_select_input(2); // Select ADC input 2 (GPIO28)
-        y = adc_read();
+        int y = adc_read();
         //printf("Y: %d V\n", y);
 
         struct adc y_pos = {1,y};
