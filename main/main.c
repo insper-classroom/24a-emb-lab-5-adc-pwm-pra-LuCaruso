@@ -44,7 +44,7 @@ void adc_task_x(void *p) {
         struct adc x_pos = {0,x};
         xQueueSend(xQueueAdc, &x_pos, portMAX_DELAY);
 
-        vTaskDelay(pdMS_TO_TICKS(700));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 
@@ -61,7 +61,7 @@ void adc_task_y(void *p) {
         struct adc y_pos = {1,y};
         xQueueSend(xQueueAdc, &y_pos, portMAX_DELAY);
 
-        vTaskDelay(pdMS_TO_TICKS(700));
+        vTaskDelay(pdMS_TO_TICKS(100));
 
     }
 }
@@ -80,7 +80,7 @@ void uart_task(void *p) {
 
         //Calcula a deadzone
         data.val = (data.val-2047)/8;
-        int zone_limit = 10;
+        int zone_limit = 80;
         if (data.val <=zone_limit && data.val >= -1*(zone_limit)) {
             data.val = 0;
         }
